@@ -19,5 +19,5 @@
 #
 # Basic Go recipe -- calls your install flavor
 
-include_recipe "golang::#{node[:go][:install_flavor]}"
+include_recipe "golang::#{node[:go][:install_strategy]}"
 
