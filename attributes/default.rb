@@ -18,18 +18,14 @@
 # limitations under the License.
 #
 # Attributes for the Go cookbook
-
+platforms = {
+  'x86_64' => 'amd64',
+  'i686' => '386
+}
 default[:go][:install_strategy] = 'source'
 default[:go][:version]  = '1.1.1'
 default[:go][:checksum] = '71ff6e7bfd8f59a12f2fc7b7abf5d006fad24664e11e39bec61c2ac84d2e573f'
-default[:go][:platform] = case node[:kernel][:machine]
-                          when 'x86_64'
-                            'amd64'
-                          when 'i686'
-                            '386'
-                          else
-                            'Not a supported Go platform'
-                          end
+default[:go][:platform] = platforms.fetch(node[:kernel][:machine], '386')
 default[:go][:install_dir] = '/usr/local/bin'
 default[:go][:cleanup] = false
 
