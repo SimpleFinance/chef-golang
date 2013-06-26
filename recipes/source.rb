@@ -19,11 +19,12 @@
 #
 # Installs Go from source
 
-node.default[:go][:filename] = "go#{node[:go][:version]}.#{node[:os]}-#{node[:go][:platform]}.tar.gz"
-node.default[:go][:url] = "http://go.googlecode.com/files/#{node["go"]["filename"]}"
+filename = "go#{node[:go][:version]}.#{node[:os]}-#{node[:go][:platform]}.tar.gz"
+cached = ::File.join(Chef::Config[:file_cache_path], filename)
+url = "http://go.googlecode.com/files/#{node["go"]["filename"]}"
 
 if node[:golang][:cleanup]
-  file ::File.join(Chef::Config[:file_cache_path], node[:go][:filename]) do
+  file cached do
     action :nothing
     subscribes :delete, 'execute[install-golang]', :immediately
   end
@@ -31,14 +32,14 @@ end
 
 execute 'install-golang' do
   cwd Chef::Config[:file_cache_path]
-  command "tar -C #{node[:go][:install_dir]} -xzf #{node[:go][:filename]}"
+  command "tar -C #{node[:go][:install_dir]} -xzf #{filename}"
   action :nothing
 end
 
-remote_file ::File.join(Chef::Config[:file_cache_path], node[:go][:filename]) do
+remote_file cached do
   owner 'root'
   mode 00644
-  source node[:go][:url]
+  source url
   checksum node[:go][:checksum]
   notifies :run, 'execute[install-golang]', :immediately
 end
