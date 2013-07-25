@@ -20,7 +20,7 @@
 # Attributes for the Go cookbook
 platforms = {
   'x86_64' => 'amd64',
-  'i686' => '386
+  'i686' => '386'
 }
 default[:go][:install_strategy] = 'source'
 default[:go][:version]  = '1.1.1'
