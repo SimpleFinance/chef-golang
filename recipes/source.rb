@@ -42,9 +42,3 @@ remote_file ::File.join(Chef::Config[:file_cache_path], node[:go][:filename]) do
   checksum node[:go][:checksum]
   notifies :run, 'execute[install-golang]', :immediately
 end
-
-link '/usr/bin/go' do
-  to ::File.join(node[:go][:install_dir], 'go', 'bin', 'go')
-  action :create
-end
-
