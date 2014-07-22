@@ -20,7 +20,7 @@
 # Installs Go from source
 
 node.default[:go][:filename] = "go#{node[:go][:version]}.#{node[:os]}-#{node[:go][:platform]}.tar.gz"
-node.default[:go][:url] = "http://go.googlecode.com/files/#{node["go"]["filename"]}"
+node.default[:go][:url] = "https://storage.googleapis.com/golang/#{node['go']['filename']}.tar.gz"
 
 if node[:go][:cleanup]
   file ::File.join(Chef::Config[:file_cache_path], node[:go][:filename]) do

@@ -23,8 +23,8 @@ platforms = {
   'i686' => '386'
 }
 default[:go][:install_strategy] = 'source'
-default[:go][:version]  = '1.1.1'
-default[:go][:checksum] = '71ff6e7bfd8f59a12f2fc7b7abf5d006fad24664e11e39bec61c2ac84d2e573f'
+default[:go][:version] = '1.3'
+default[:go][:checksum] = '70a7e220f00143495a5767f70763dddc48f651f7f2cb4299cb8fac865245a0b8'
 default[:go][:platform] = platforms.fetch(node[:kernel][:machine], '386')
 default[:go][:install_dir] = '/usr/local/bin'
 default[:go][:cleanup] = false
