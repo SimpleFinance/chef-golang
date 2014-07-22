@@ -28,4 +28,4 @@ default[:go][:checksum] = '70a7e220f00143495a5767f70763dddc48f651f7f2cb4299cb8fa
 default[:go][:platform] = platforms.fetch(node[:kernel][:machine], '386')
 default[:go][:install_dir] = '/usr/local/bin'
 default[:go][:cleanup] = false
-
+default[:go][:owner] = 'root'
