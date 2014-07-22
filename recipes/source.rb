@@ -36,15 +36,9 @@ execute 'install-golang' do
 end
 
 remote_file ::File.join(Chef::Config[:file_cache_path], node[:go][:filename]) do
-  owner 'root'
+  owner node[:go][:owner]
   mode 00644
   source node[:go][:url]
   checksum node[:go][:checksum]
   notifies :run, 'execute[install-golang]', :immediately
 end
-
-link '/usr/bin/go' do
-  to ::File.join(node[:go][:install_dir], 'go', 'bin', 'go')
-  action :create
-end
-
