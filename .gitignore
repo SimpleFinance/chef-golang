@@ -3,3 +3,4 @@ cookbooks
 *.swp
 .kitchen/
 .kitchen.local.yml
+.vagrant

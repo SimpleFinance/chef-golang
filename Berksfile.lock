@@ -1,0 +1,7 @@
+DEPENDENCIES
+  golang
+    path: .
+    metadata: true
+
+GRAPH
+  golang (1.0.0)
