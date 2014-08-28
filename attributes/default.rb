@@ -26,6 +26,6 @@ default[:go][:install_strategy] = 'source'
 default[:go][:version] = '1.3'
 default[:go][:checksum] = '70a7e220f00143495a5767f70763dddc48f651f7f2cb4299cb8fac865245a0b8'
 default[:go][:platform] = platforms.fetch(node[:kernel][:machine], '386')
-default[:go][:install_dir] = '/usr/local/bin'
+default[:go][:install_dir] = '/usr/local'
 default[:go][:cleanup] = false
 default[:go][:owner] = 'root'
